@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Ангелиночки ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9ecb, #ff5fa2);
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+.box {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    max-width: 520px;
+    position: relative;
+    z-index: 10;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.yes {
+    background: #ff4d94;
+    color: white;
+}
+
+.no {
+    background: #ccc;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#loveContent {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+/* Счётчик */
+#counterBox {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffe6f0;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #ff2e7e;
+    font-size: 18px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.signature {
+    margin-top: 10px;
+    font-style: italic;
+    color: #d63384;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>С днем святого Валентина, Ангелиночка 💖</h2>
+    <p>Будешь ли ты моей валентинкой?</p>
+
+    <button class="yes" onclick="sayYes()">Да</button>
+    <button class="no" onclick="sayNo(this)">Нет</button>
+
+    <div id="loveContent">
+        <h3>Ты — самое прекрасное, что есть в моей жизни ❤️</h3>
+
+        <div id="counterBox"></div>
+        <div class="signature">
+            И с каждым днём я люблю тебя всё сильнее 💞
+        </div>
+
+        <div class="gallery">
+            <img src="photo1.jpg">
+            <img src="photo2.jpg">
+            <img src="photo3.jpg">
+        </div>
+    </div>
+</div>
+
+<script>
+function sayNo(btn) {
+    btn.style.display = "none";
+}
+
+function sayYes() {
+    document.getElementById("loveContent").style.display = "block";
+}
+
+// 💞 СЧЁТЧИК ВРЕМЕНИ
+function updateCounter() {
+    const startDate = new Date("2023-09-28T00:00:00");
+    const now = new Date();
+
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("counterBox").innerHTML =
+        `Мы вместе уже <br>
+        ${days} дней 💗<br>
+        ${hours} часов ${minutes} минут ${seconds} секунд`;
+}
+
+setInterval(updateCounter, 1000);
+updateCounter();
+
+// Сердечки
+function createHearts() {
+    for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(heart);
+    }
+}
+createHearts();
+</script>
+
+</body>
+</html>
