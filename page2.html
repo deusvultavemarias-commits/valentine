@@ -36,6 +36,24 @@ body {
     color: #b30059;
 }
 
+/* Кнопка Далее */
+#nextBtn {
+    margin-top: 25px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #ff4d94, #ff79ac);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#nextBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
 @keyframes fadeIn {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
@@ -70,10 +88,15 @@ body {
     Сегодня, в день святого Валентина, я хочу, чтобы ты чувствовала моё сердце рядом с твоим и знала,
     что каждый день, каждая минута, каждый миг моей жизни наполнен тобой.
     </p>
+
+    <!-- Кнопка Далее -->
+    <button id="nextBtn" onclick="window.location.href='page3.html'">
+        Далее ❤️
+    </button>
 </div>
 
 <!-- Музыка -->
-<audio id="loveSong">
+<audio id="loveSong" preload="auto">
     <source src="until_i_found_you.mp3" type="audio/mpeg">
 </audio>
 
